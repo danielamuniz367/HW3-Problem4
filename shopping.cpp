@@ -46,7 +46,7 @@ int main()
 			inFile >> W[i];
 		}
 
-		int maxTPrice = 0;
+		int maxPrice = 0;
 
 		inFile >> F;
 
@@ -59,11 +59,11 @@ int main()
 			inFile >> M;
 			// find maximum price of items that can be carried by
 			// current family member and add it to maxPrice
-			maxTPrice = maxTPrice + shoppingKnapsack(W, P, N, M, vec[j]);
+			maxPrice = maxPrice + shoppingKnapsack(W, P, N, M, vec[j]);
 		}
 
 		outFile << "Test Case " << k + 1 << endl;
-		outFile << "Total Price " << maxTPrice << endl;
+		outFile << "Total Price " << maxPrice << endl;
 		outFile << "Member Items" << endl;
 
 		// print the items each family member should take
