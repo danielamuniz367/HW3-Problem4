@@ -71,7 +71,7 @@ int main()
 			maxTPrice = maxTPrice + knapsackDP(W, P, N, M, vec[j]);
 		}
 
-		outFile << "Test Case " << k << endl;
+		outFile << "Test Case " << k + 1 << endl;
 		outFile << "Total Price " << maxTPrice << endl;
 		outFile << "Member Items" << endl;
 
