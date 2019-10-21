@@ -22,24 +22,17 @@ int main()
 	ifstream inFile;
 	ofstream outFile;
 	
-	// open input file
 	inFile.open("shopping.txt");
-	// check whether the input file is opend or not
+
 	if (!inFile.is_open())
 	{
-		cout << "can't open the file" << endl;
+		cout << "Error: cannot open file" << endl;
 		return 1;
 	}
 
 	// open the output file
-	outFile.open("shopping.out");
-	// check whehter the output file is opened or not
-	if (!outFile.is_open())
-	{
-		cout << "can't open the file" << endl;
-		return 1;
-	}
-
+	outFile.open("results.txt");
+	
 	// read the number of test cases from the input file
 	inFile >> T;
 	
@@ -79,6 +72,7 @@ int main()
 		}
 
 		// Write the maximum total price to output file
+		outFile << "Test Case " << T << endl;
 		outFile << "Total Price " << maxTPrice << endl;
 		outFile << "Member Items" << endl;
 
