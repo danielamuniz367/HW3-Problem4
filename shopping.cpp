@@ -79,7 +79,7 @@ int main()
 		for (int t = 0; t < F; t++)
 		{
 			sort(vec[t].begin(), vec[t].end());
-			outFile << "\t" << t + 1 << ":";
+			outFile << "    " << t + 1 << ":";
 			for (int s = 0; s < vec[t].size(); s++)
 				outFile << vec[t][s] << " ";
 
