@@ -43,6 +43,7 @@ int main()
 			vec[l].clear();
 		// read the number of items from the input file
 		inFile >> N;
+		outFile << "Test Case " << T << endl;
 
 		// read the price and weight of each item
 		// into respective arrays
@@ -72,7 +73,6 @@ int main()
 		}
 
 		// Write the maximum total price to output file
-		outFile << "Test Case " << T << endl;
 		outFile << "Total Price " << maxTPrice << endl;
 		outFile << "Member Items" << endl;
 
