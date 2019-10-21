@@ -5,20 +5,19 @@
 
 using namespace std;
 
-int knapsackDP(int[], int[], int, int, vector<int>&);
-
+int shoppingKnapsack(int[], int[], int, int, vector<int>&);
 int max(int, int);
 
 int main()
 {
-	int T;          // no. of test cases
-	int N;          // no. of items
+	int T;          // test cases
+	int N;          // number of items
 	int P[100];     // prices of items
 	int W[100];     // weights of items
-	int F;          // no. of people in the family
-	int M = 0;        // Maximum weight that can be carried
+	int F;          // number of people in the family
+	int M = 0;      // Max weight that can be carried
 
-	vector<vector<int> > vec(100);
+	vector<vector<int>> vec(100);
 	ifstream inFile;
 	ofstream outFile;
 	
@@ -30,22 +29,17 @@ int main()
 		return 1;
 	}
 
-	// open the output file
 	outFile.open("results.txt");
 	
-	// read the number of test cases from the input file
 	inFile >> T;
 	
-	// process T number of test cases
 	for (int k = 0; k < T; k++)
 	{
 		for (int l = 0; l < vec.size(); l++)
 			vec[l].clear();
-		// read the number of items from the input file
+		
 		inFile >> N;
 
-		// read the price and weight of each item
-		// into respective arrays
 		for (int i = 0; i < N; i++)
 		{
 			inFile >> P[i];
@@ -54,13 +48,10 @@ int main()
 
 		int maxTPrice = 0;
 
-		// read number of family members
 		inFile >> F;
 
-		// find maximum price of items that can be carried by
-		// each family member and keep track the total of the
-		// maximum prices
-
+		// find max price of items that can be carried by each family member
+		// and keep track the total of the max prices
 		for (int j = 0; j < F; j++)
 		{
 			// read the maximum weight that can be carried by a
@@ -68,7 +59,7 @@ int main()
 			inFile >> M;
 			// find maximum price of items that can be carried by
 			// current family member and add it to maxPrice
-			maxTPrice = maxTPrice + knapsackDP(W, P, N, M, vec[j]);
+			maxTPrice = maxTPrice + shoppingKnapsack(W, P, N, M, vec[j]);
 		}
 
 		outFile << "Test Case " << k + 1 << endl;
@@ -87,18 +78,15 @@ int main()
 		}
 	}
 
-	// close the files
 	inFile.close();
 	outFile.close();
 
 	return 0;
 }
 
-// returns the maximum price of items that can be carried
-
-// by a person, who can carry maximum weight M
-
-int knapsackDP(int W[], int P[], int N, int M, vector<int> &v)
+// returns the max price of items that can be carried
+// by a person, who can carry max weight M
+int shoppingKnapsack(int W[], int P[], int N, int M, vector<int> &v)
 {
 	int K[N + 1][M + 1];
 	
@@ -118,7 +106,7 @@ int knapsackDP(int W[], int P[], int N, int M, vector<int> &v)
 		}
 	}
 
-	// stores the result of Knapsack
+	// stores Knapsack results
 	int res = K[N][M];
 	int w = M;
 
@@ -130,23 +118,23 @@ int knapsackDP(int W[], int P[], int N, int M, vector<int> &v)
 		{
 			// This item is included.
 			v.push_back(i);
-			// Since this weight is included its
-			// value is deducted
+			
+			// Since this weight is included its value is deducted
 			res = res - P[i - 1];
 			w = w - W[i - 1];
 		}
 	}
-	// K[N][M] represents the maximum price of items that can be carried by
+	
+	// K[N][M] represents the max price of items that can be carried by
 	// the family member
 	return K[N][M];
 }
 
-// returns maximum of two parameters that are received
+// returns max of two received parameters
 int max(int a, int b)
 {
 	if (a > b)
 		return a;
 	else
 		return b;
-
 }
