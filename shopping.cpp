@@ -43,7 +43,6 @@ int main()
 			vec[l].clear();
 		// read the number of items from the input file
 		inFile >> N;
-		outFile << "Test Case " << T << endl;
 
 		// read the price and weight of each item
 		// into respective arrays
@@ -72,27 +71,18 @@ int main()
 			maxTPrice = maxTPrice + knapsackDP(W, P, N, M, vec[j]);
 		}
 
-		// Write the maximum total price to output file
+		outFile << "Test Case " << k << endl;
 		outFile << "Total Price " << maxTPrice << endl;
 		outFile << "Member Items" << endl;
-
-		// Write the maximum total price to console
-		cout << "Total Price " << maxTPrice << endl;
-		cout << "Member Items" << endl;
 
 		// print the items each family member should take
 		for (int t = 0; t < F; t++)
 		{
 			sort(vec[t].begin(), vec[t].end());
 			outFile << t + 1 << ":";
-			cout << t + 1 << ":";
 			for (int s = 0; s < vec[t].size(); s++)
-			{
 				outFile << vec[t][s] << " ";
-				cout << vec[t][s] << " ";
-			}
 
-			cout << endl;
 			outFile << endl;
 		}
 	}
